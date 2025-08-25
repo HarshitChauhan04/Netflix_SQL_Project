@@ -11,7 +11,7 @@ Dataset
 The data for this project is sourced from the Kaggle dataset:
 
 # Dataset Link: Movies Dataset
-Schema
+# Schema
 DROP TABLE IF EXISTS netflix;
 CREATE TABLE netflix
 (
@@ -29,7 +29,7 @@ CREATE TABLE netflix
     description  VARCHAR(550)
 );
 Business Problems and Solutions
-1. Count the Number of Movies vs TV Shows
+# 1. Count the Number of Movies vs TV Shows
 SELECT 
     type,
     COUNT(*)
@@ -37,7 +37,7 @@ FROM netflix
 GROUP BY 1;
 Objective: Determine the distribution of content types on Netflix.
 
-2. Find the Most Common Rating for Movies and TV Shows
+# 2. Find the Most Common Rating for Movies and TV Shows
 WITH RatingCounts AS (
     SELECT 
         type,
@@ -46,12 +46,12 @@ WITH RatingCounts AS (
     FROM netflix
     GROUP BY type, rating;
 
-3. List All Movies Released in a Specific Year (e.g., 2020)
+# 3. List All Movies Released in a Specific Year (e.g., 2020)
 SELECT * 
 FROM netflix
 WHERE release_year = 2020;
 
-4. Find the Top 5 Countries with the Most Content on Netflix
+# 4. Find the Top 5 Countries with the Most Content on Netflix
 SELECT * 
 FROM
 (
@@ -66,7 +66,7 @@ ORDER BY total_content DESC
 LIMIT 5;
 Objective: Identify the top 5 countries with the highest number of content items.
 
-5. Identify the Longest Movie
+# 5. Identify the Longest Movie
 SELECT 
     *
 FROM netflix
@@ -74,7 +74,7 @@ WHERE type = 'Movie'
 and duration=(select max(duration) from netflix);
 Objective: Find the movie with the longest duration.
 
-6. Find All Movies/TV Shows by Director 'Masahiko Murata'
+# 6. Find All Movies/TV Shows by Director 'Masahiko Murata'
     SELECT 
         *
     FROM netflix
@@ -82,14 +82,14 @@ Objective: Find the movie with the longest duration.
 WHERE director_name = 'Masahiko Murata';
 Objective: List all content directed by 'Rajiv Chilaka'.
 
-7. List All TV Shows with More Than 5 Seasons
+# 7. List All TV Shows with More Than 5 Seasons
 SELECT *
 FROM netflix
 WHERE type = 'TV Show'
   AND duration > 5;
 Objective: Identify TV shows with more than 5 seasons.
 
-8. Count the Number of Content Items in Each Genre
+# 8. Count the Number of Content Items in Each Genre
 SELECT 
     listed_in AS genre,
     COUNT(show_id) AS total_content
@@ -97,20 +97,20 @@ FROM netflix
 GROUP BY 1;
 Objective: Count the number of content items in each genre.
 
-9. List All Movies that are Documentaries
+# 9. List All Movies that are Documentaries
 SELECT * 
 FROM netflix
 WHERE listed_in LIKE '%Documentaries';
 Objective: Retrieve all movies classified as documentaries.
 
-10. Find All Content Without a Director
+# 10. Find All Content Without a Director
 SELECT * 
 FROM netflix
 WHERE director IS NULL;
 Objective: List content that does not have a director
 
 
-11. Find content release by india on netflix.
+# 11. Find content release by india on netflix.
  select * from netflix
  where country='India';
  
@@ -122,6 +122,6 @@ Geographical Insights: The top countries and the average content releases by Ind
 Content Categorization: Categorizing content based on specific keywords helps in understanding the nature of content available on Netflix.
 This analysis provides a comprehensive view of Netflix's content and can help inform content strategy and decision-making.
 
-Author - Harshit Chauhan
+# Author - Harshit Chauhan
 This project is part of my portfolio, showcasing the SQL skills essential for data analyst roles.
 
